@@ -1,6 +1,6 @@
 {
   "name": "oh-my-chat",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "main": "dist/oh-my-chat.umd.min.js",
   "keywords": [
     "vue",

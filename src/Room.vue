@@ -102,15 +102,11 @@ export default {
         { bg: '#12b7f5', text: '#fff' },
         { bg: '#ff8eb3', text: '#fff' }
       ]
-    },
-    messages: {
-      type: Array,
-      default: () => []
     }
   },
   data() {
     return {
-      list: this.messages,
+      list: [],
       last_pending_id: 0,
       resolver: null
     }
