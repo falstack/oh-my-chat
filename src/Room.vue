@@ -21,6 +21,7 @@
         v-if="msg.isBubble"
         :key="`${index}-${msg.id}`"
         :color="msg.color"
+        :status="msg.status"
         :loading="msg.loading"
         :float="msg.float"
       >
@@ -101,11 +102,15 @@ export default {
         { bg: '#12b7f5', text: '#fff' },
         { bg: '#ff8eb3', text: '#fff' }
       ]
+    },
+    messages: {
+      type: Array,
+      default: () => []
     }
   },
   data() {
     return {
-      list: [],
+      list: this.messages,
       last_pending_id: 0,
       resolver: null
     }
@@ -141,6 +146,7 @@ export default {
         float: params.float || 'left',
         color: this._computeBubbleColor(params),
         loading,
+        status: params.status || '',
         item: params.data,
         next: null
       }
@@ -167,6 +173,16 @@ export default {
         item: params.data
       }
       insertToAfter ? this.list.push(data) : this.list.unshift(data)
+    },
+    updateMessage(id, obj) {
+      for (let i = this.list.length - 1; i >= 0; i--) {
+        if (this.list[i].id === id) {
+          Object.keys(obj).forEach(key => {
+            this.list[i][key] = obj[key]
+          })
+          break
+        }
+      }
     },
     _setResolve() {
       setTimeout(() => {

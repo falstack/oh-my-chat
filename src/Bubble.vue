@@ -23,6 +23,10 @@
     .msg-body {
       text-align: left;
     }
+
+    .msg-status {
+      right: -20px;
+    }
   }
 
   &-right {
@@ -33,12 +37,17 @@
     .msg-body {
       text-align: right;
     }
+
+    .msg-status {
+      left: -20px;
+    }
   }
 
   .msg-body {
     overflow: hidden;
 
     .msg-bubble {
+      position: relative;
       padding: 7px 13px;
       border-radius: 15px;
       max-width: 55%;
@@ -48,6 +57,11 @@
       word-break: break-all;
       font-size: 14px;
       line-height: 1.6;
+
+      .msg-status {
+        position: absolute;
+        top: 11px;
+      }
     }
   }
 }
@@ -66,6 +80,7 @@
         </slot>
         <span v-show="!loading">
           <slot />
+          <i v-if="status" class="msg-status" :class="`msg-status-${status}`" />
         </span>
       </div>
       <slot name="footer" />
@@ -93,6 +108,10 @@ export default {
     },
     loading: {
       type: Boolean,
+      required: true
+    },
+    status: {
+      type: String,
       required: true
     }
   },

@@ -86,6 +86,7 @@ export default {
         pending: type === 'pending-msg',
         header: 'nickname',
         footer: 'created-at',
+        status: 'success',
         data: {
           content: this.randomContent(),
           src: images,
@@ -135,11 +136,19 @@ export default {
   text-align: center;
 
   .room-wrap {
-    width:  560px;
+    width: 560px;
     height: 500px;
     overflow: auto;
     padding: 20px;
     border: 1px solid #47494e;
+  }
+
+  .msg-status {
+    display: block;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background-color: lawngreen;
   }
 }
 </style>

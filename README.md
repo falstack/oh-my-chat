@@ -20,6 +20,7 @@ Vue.component(ChatRoom.name, ChatRoom)
 <template>
   <ChatRoom
     ref="room"
+    :messages="loadMessageList"
     :avatar-component="avatarComp"
     :message-components="messageComps"
     :header-components="headerComps"
@@ -64,6 +65,7 @@ export default {
 ### props
 | name | type | required | meaning |
 | ---- | ---- | -------- | ------- |
+| messages | 消息 array | N | 历史消息填充 |
 | avatarComponent | vue-component | N | 头像组件，如果定义了，并且 data 中有 user，就会给展示头像组件 |
 | loadingComponent | vue-component | N | loading 组件，当内容是异步展示的时候，会展示 loading，不填则使用默认的 loading |
 | messageComponents | <Object>vue-components | N | 自定义气泡容器，默认仅支持 text 容器，通过 addMessage 中的 type 来调用不同容器 |
