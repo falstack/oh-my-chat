@@ -1,21 +1,5 @@
-<style lang="scss">
-.chat-room {
-  .msg-fade {
-    &-enter-active {
-      transition: all 0.3s ease;
-    }
-
-    &-enter,
-    &-leave-to {
-      opacity: 0;
-      transform: translateY(10px);
-    }
-  }
-}
-</style>
-
 <template>
-  <transition-group tag="div" name="msg-fade" class="chat-room">
+  <div class="chat-room">
     <template v-for="(msg, index) in list">
       <Bubble
         v-if="msg.isBubble"
@@ -59,7 +43,7 @@
       </Bubble>
       <component :is="msg.message" v-else :key="msg.id" :item="msg.item" />
     </template>
-  </transition-group>
+  </div>
 </template>
 
 <script>
