@@ -106,6 +106,11 @@ export default {
     }
   },
   methods: {
+    clearMessage() {
+      this.list = []
+      this.last_pending_id = 0
+      this.resolver = null
+    },
     addMessage(params, insertToAfter = true) {
       const type = params.type || 'text-msg'
       const id =
